@@ -310,7 +310,7 @@ p_\theta(x)
 &=E_{q_\phi(z|x)}[\cfrac{p_\theta(x|z)p(z)}{q_\phi(z|x)}]
 \end{split}
 $$
-PS😕
+
 
 - [ ] 这里有一个问题还没有理清楚
 
