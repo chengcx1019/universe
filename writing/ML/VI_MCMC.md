@@ -79,7 +79,7 @@ MCMC产生与目标分布中渐进的精确样本，适合于精确推理，但�
 
 ### 变分推理
 
-> 定义：从关于**隐变量的分布族中**找到一个与真实分布(p,参数用$\theta$标记)差异最小的分布，这个分布的参数用𝝓来标记，即通过寻求最可能接近真实分布的近似分布$q$来逼近真实分布$p$。
+> 定义：从关于**隐变量的分布族中**找到一个与真实分布(p,参数用$\theta$标记)差异最小的分布，这个分布的参数用$$\phi$$来标记，即通过寻求最可能接近真实分布的近似分布$q$来逼近真实分布$p$。
 
 相比EM算法（隐变量的条件分布在迭代过程中是可以计算的），**VI则用于隐变量的条件概率无法计算的模型**。
 
@@ -640,29 +640,3 @@ multidimensional scaling (MDS)
 locally linear embedding (LLE)
 
 isometric mapping (IsoMap)
-
-
-
-
-
-![sc_25](/Users/changxin/Pictures/SceenShots/sc_25.png)
-
-![sc_26](/Users/changxin/Pictures/SceenShots/sc_26.png)
-
-
-
-![sc_27](/Users/changxin/Pictures/SceenShots/sc_27.png)
-
-
-
-降维方法汇总
-
-
-
-师姐：
-
-	跑实验没啥进展，最近在看变分自编码器，找找特征学习和结构设计的方向。
-	
-	代码传了两份，一是未简化的版本，二是简化实验版。
-
-20180807
