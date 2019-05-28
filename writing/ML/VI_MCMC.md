@@ -4,8 +4,11 @@
 >
 > 另注变分推理用于贝叶斯估计和机器学习领域中的近似计算复杂积分则称变分贝叶斯推理(Variational Bayesian Inference)，它关注的如何求解一个近似后验概率分布。
 
+学习MCMC最好的方法就是学习实例，抽象的概念解释仍然可能让你一头雾水，但是理解一个实例，一个实际问题的求解过程，也许可以事半功倍;推荐之前对我启发比较大的一个示例，一个关于Gibbs采样的实例
+
+
+
 - [ ] (全文对应不同分布的指代需要同步)
-- [ ] 对数据驱动方法的模型整理
 
 变分自编码器(Variation Autoencoder,VAE)和生成对抗网络(Generative Adversarial Network ,GAN)是典型的深度生成模型，这类**生成模型**通常被参数化为一个深度神经网络：
 
@@ -39,7 +42,7 @@
 >
 > $p(x;\theta)$表达分布，表示$x$的分布是由参数$\theta$确定的；
 >
-> 上一篇文章中曾经强调过符号"|"的意义,注意区分表达的是条件概率还是表达似然性，主要是看"|"后面的参数是不是随机变量(嗯，关于随机变量的说法，频率学派可能就不同意了，认为是固定参数)。
+> [上一篇文章中](https://changxin10m.com/postDetail/%2Fblog%2Fapi%2Fji-qi-xue-xi-de-mu-biao-han-shu-shi-ru-he-sheng-cheng-de,30%2F)曾经强调过符号"|"的意义,注意区分表达的是条件概率还是表达似然性，主要是看"|"后面的参数是不是随机变量(嗯，关于随机变量的说法，频率学派可能就不同意了，认为是固定参数)。
 
 在得到优化参数目标函数的表达式之前，我们需要先了解变分推理，而变分推理本身和MCMC之间有着密切的关系。
 
@@ -71,7 +74,7 @@ $$
 $$
 q_\phi^*(z|x)={arg\ min}_{q_\phi(z|x)\in D}KL({q_\phi(z|x)}||{p_\theta(z|x)})
 $$
-VI通过优化来近似概率分布，广泛应用于估计**使用贝叶斯推理估计后验概率分布时**出现的难以计算的概率,比如上面提到的$p(x)​$。
+VI通过优化来近似概率分布，广泛应用于估计**使用贝叶斯推理估计后验概率分布时**出现的难以计算的概率,比如上面提到的$p(x)$。
 
 通常我们也用MCMC方法来近似，但是当面对大数据集或者复杂模型，MCMC需要采样大量的样本来进行可靠的估计，但这在效率上是不可接受的。
 
@@ -144,7 +147,7 @@ D_{KL}(q(\theta|\phi)||p(\theta|X,Y,\alpha) )
 \end{split}
 $$
 
-- [ ] $F(D,\phi)​$,变分自由能量的意义是什么
+- [ ] $F(D,\phi)$,变分自由能量的意义是什么
 
 许多概率模型由未归一化的概率分布$\hat p(x;\theta)$定义，必须通过除以配分函数来归一化$\hat p$,以获得一个有效的概率分布。
 
@@ -261,7 +264,7 @@ end for (until convergence)
 
 **从一个实例理解Gibbs采样算法**：
 
-假设有一个观测序列，前n个数据类似 ，后面n～N类似，假设数据服从Possion分布：
+假设有一个观测序列，前n个数据类似 ，后面n+1～N类似，假设数据服从Possion分布：
 
 
 $$
@@ -277,7 +280,7 @@ $n\sim Uniform(1,2,3,...N)$
 
 $\lambda_i\sim Gamma(\lambda_i;a,b)$
 
-$x_i\sim\lbrace_{Possion(x_i;\lambda_2) n < i \le N}^{Possion(x_i;\lambda_2)1\le i \le n}$
+$x_i\sim\lbrace_{Possion(x_i;\lambda_2) n < i \le N}^{Possion(x_i;\lambda_1)1\le i \le n}$
 
 对于隐变量$n,\lambda_1,\lambda_2$的后验概率分布可以用Bayes公式求解：
 $$
@@ -285,10 +288,17 @@ p(n,\lambda_1,\lambda_2|x_{1:N})\propto p(x_{1:n}|\lambda_1)p(x_{n+1:N}|\lambda_
 $$
 
 $$
-x_i\sim\{_{Possion(x_i;\lambda_2) n < i \le N}^{Possion(x_i;\lambda_2)1\le i \le n}
+x_i\sim\{_{Possion(x_i;\lambda_2) n < i \le N}^{Possion(x_i;\lambda_1)1\le i \le n}
 $$
 
 代码实现：
+
+```python
+
+
+```
+
+
 
 代码绘制出图形
 
@@ -475,7 +485,7 @@ $$
    \end{split}
    $$
 
-2. 估计$\boldsymbol \mu​$:
+2. 估计$\boldsymbol \mu$:
 
    
 
