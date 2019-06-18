@@ -208,11 +208,31 @@ https://yq.aliyun.com/articles/40494?spm=a2c4e.11153959.teamhomeleft.95.44ab18b1
 
 - docker exec
 
-  在container内运行指令
+  - 在container内运行指令
 
-  - docker exec -it {container-hash} bash 
+    `docker exec -it {container-hash} bash `
 
-- docker logs {container-hash}
+- 启动一个已存在container
+
+  `docker start {container_hash}`
+
+- 查看容器日志
+
+  `docker logs {container-hash}`
+
+
+
+**容器与宿主机文件互通：**
+
+- 从容器拷贝文件到宿主机
+
+  `docker cp {container_hash}:/path/file /yourpath/`
+
+- 从宿主机拷贝文件到容器
+
+  `docker cp  /yourpath/file {container_hash}:/path/file`
+
+更多指令参考：https://docs.docker.com/engine/reference/commandline/start/
 
 ##### compose
 
@@ -345,4 +365,6 @@ https
 ## redis
 
 监控redis运行状态：redis-cli -h localhost -p ${port} monitor 
+
+
 

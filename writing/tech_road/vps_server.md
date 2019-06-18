@@ -26,10 +26,18 @@ BBR加速：
 
 1. [升级内核](https://www.howtoing.com/how-to-upgrade-linux-kernel-in-ubuntu-1604-server)
    - 查看内核列表`sudo dpkg --get-selections |grep linux-image`
+   
    - 查看当前使用的内核：`uname -r`
+   
    - 下载对应系统的内核安装包并安装
      - https://kernel.ubuntu.com/~kernel-ppa/mainline/v4.20/
      - `sudo dpkg -i *.deb`
      - ` sudo update-grub`
      - `sudo reboot`
+     
    - 设置bbr
+   
+     - `wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh`
+   
+     - 验证：`sysctl net.ipv4.tcp_available_congestion_control`
+
