@@ -166,7 +166,7 @@ diff的起点是两个分支的公共父节点（即commit）
 
 在git中，有3种类型的重置。重置是让文件回到git历史中的一个特定版本。
 
-1.  `git reset –hard {{some-commit-hash}}` —— 回退到一个特定的历史版本。丢弃这次提交之后的所有变更
+1.  `git reset –hard {{some-commit-hash}}` —— 回退到一个特定的历史版本。丢弃这次提交之后的所有变更 (特别的，`git reset –hard HEAD`可以恢复异常merge)
 2.  `git reset {{some-commit-hash}}` —— 回滚到一个特定的历史版本。将这个版本之后的所有变更移动到**“未暂存”**的阶段。这也就意味着你需要运行 git add . 和 git commit 才能把这些变更提交到仓库
 3. `git reset –soft {{some-commit-hash}}` ——回滚到一个特定的历史版本。将这次提交之后所有的变更移动到暂存并准备提交阶段。意味着你只需要运行 git commit 就可以把这些变更提交到仓库
 
@@ -181,3 +181,4 @@ diff的起点是两个分支的公共父节点（即commit）
 ### others
 
 两个共同历史的分支进行合并:git pull origin branchname --allow-unrelated-histories
+
