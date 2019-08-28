@@ -105,11 +105,11 @@ diff的起点是两个分支的公共父节点（即commit）
 
 - diff
 
-  查看尚未暂存的文件更新了哪些部分，如果要查看已暂存的内容，则需要添加—cache或者—staged指令，git diff本身只显示尚未暂存的改动，而不是自上次提交以来所做的所有改动，所以如果暂存了所有的更新过的文件后，再使用git diff后就会什么都没有。	
+  查看尚未暂存的文件更新了哪些部分，如果要查看已暂存的内容，则需要添加**—cache**或者**—staged**指令，git diff本身只显示尚未暂存的改动，而不是自上次提交以来所做的所有改动，所以如果暂存了所有的更新过的文件后，再使用git diff后就会什么都没有。	
 
 - rebase
 
-  > rebase与merge的区别在于rebse不会生成额外的提交。使用远端仓库中的最新代码更新本地仓库时，请使用变基。在处理拉取（pull request）请求，以将功能分支和（发布分支或主分支）合并时，请使用合并。
+  > rebase与merge的区别在于rebase不会生成额外的提交。使用远端仓库中的最新代码更新本地仓库时，请使用变基。在处理拉取（pull request）请求，以将功能分支和（发布分支或主分支）合并时，请使用合并。
   >
   > 只在本地仓库使用rebase,你不能改变该仓库其他分布（其他对该仓库的clone）与你共有的提交记录信息，否则其他人与主仓库同步则无法识别提交导致混乱。
 
@@ -130,6 +130,44 @@ diff的起点是两个分支的公共父节点（即commit）
   3. 如果`new_branch`有多次提交，则下一次提交继续1，2的过程
 
      
+
+  如果一切操作顺利的话，rebase和merge得到的最终快照始终是一样，只是rebase使得提交历史更加整洁。
+
+  - 指令示例
+
+  `git rebase --onto master server client`
+
+  选中在client分支但是不在server分支里的修改(找出client和server的共同祖先之后的修改)，将它们在master分支上重放 
+
+  
+
+  ![image-20190809092032244](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20190809092032244.png)
+
+  
+
+  ![image-20190809092056147](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20190809092056147.png)
+
+  
+
+  ![image-20190809092120420](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20190809092120420.png)
+
+  
+
+  ![image-20190809092137803](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20190809092137803.png)
+
+  
+
+  ![image-20190809092211139](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20190809092211139.png)
+
+  
+
+  - 使用变基有一条准则要牢记
+
+    **不要对在你的仓库外有副本的分支执行变基**
+
+  - 如果同学不慎把协作的内容变基后提交了，可以补救
+
+    `git pull --rebase`(todo 待深入)
 
   
 
@@ -178,7 +216,20 @@ diff的起点是两个分支的公共父节点（即commit）
 
 
 
+### revert和cherry-pick
+
+
+
+### 分支原理
+
+
+
 ### others
 
 两个共同历史的分支进行合并:git pull origin branchname --allow-unrelated-histories
 
+### todo
+
+- 将连续几个历史提交合并
+- git add --patch
+- git log --no-merges target_branch...current_branch 显示所有在后面分支但不在前面分支的提交列表
