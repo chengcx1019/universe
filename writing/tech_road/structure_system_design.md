@@ -681,7 +681,7 @@ https://wizardforcel.gitbooks.io/think-os/content/ch11.html
 
    4. ##### 内存段
 
-      一个运行中进程的数据组织为4个段：
+      一个运行中进程的数据组织为4个段(理解堆栈的差异)：
 
       - text
       - static

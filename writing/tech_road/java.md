@@ -241,9 +241,35 @@ Collections.sort(words,
 
 ## 第11章	并发
 
+- [ ] java如何在线程间同步
+
 第78条：同步访问共享的可变数据  
 
+jvm在内部有一个优化
+
+会将以下代码：
+
+```java
+while(!stopRequested){
+  i++;
+}
+```
+
+转变为：
+
+```java
+if(!stopRequested){
+  while(true){
+    i++;
+  }
+}
+```
+
+
+
 第79条：避免过度同步  
+
+java程序语言设计的锁是可重入的
 
 第80条：executor、task和stream优先于线程  
 
@@ -272,6 +298,12 @@ Collections.sort(words,
 ## 附录　与第2版中条目的对应关系  286
 
 ## 参考文献  289
+
+
+
+### AOP
+
+
 
 
 
