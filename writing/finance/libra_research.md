@@ -108,7 +108,7 @@ end note
 @enduml
 ```
 
-![](/Users/changxin/Documents/StartUp/universe/libra_research.svg)
+![](https://tva1.sinaimg.cn/large/006tNbRwly1ga5zfg6u21j317g0u0wl3.jpg)
 
 小结下，Libra区块链的共识协议由多个被授权的验证节点完成，多个节点选举的协议是BFT，在验证节点足够多的情况下，我们有理由相信这个账本是基于共识产生的。
 
