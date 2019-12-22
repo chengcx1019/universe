@@ -2,7 +2,7 @@
 
 很难免俗的，不理解货币的实质，很难去理解数字加密货币，以及国家为什么想要控制数字货币的发行。不再赘述，货币的实质是一种市场交易的解决方案，这种工具属性本身是货币的**价值**，而让货币具有这种工具属性的前提条件，是维持货币价格的稳定，至于货币的背后是金本位，还是国家信用，抑或是房产资产，目的都是维持货币**价格**的稳定。
 
-而提到数字货币，又很难绕开比特币，简单介绍下比特币，比特币的实质是一个去中心化的转账系统，它的底层基于区块链，所谓区块，实际上是一页账本，交易越多，区块就会累积，形成一个链，称为区块链，中本聪设计了一种工作量证明的共识机制来发行比特币，每个区块出一道数学题，谁最快解出来，谁就拥有这次的记账权，每个区块会产生一些比特币，用来奖励记账的人，而“挖矿”就是指获取记账权以得到比特币作为奖励。**比特币的问题出在货币发行机制上**，挖矿者都在解一道无用的题目，表面上付出了劳动，消耗了电，但是没有产生价值，发行方没有获得任何资产以在比特币价格发生波动时来维护比特币价格的稳定。所以比特币没有办法称为一种世界范围内的货币，最终沦为了一种数字投机产品。
+而提到数字货币，又很难绕开比特币，简单介绍下比特币，比特币的实质是一个去中心化的转账系统，它的底层基于区块链，所谓区块，实际上是一页账本，交易越多，区块就会累积，形成一个链，称为区块链，中本聪设计了一种工作量证明的共识机制来发行比特币，每个区块出一道数学题，谁最快解出来，谁就拥有这次的记账权，每个区块会产生一些比特币，用来奖励记账的人，而“挖矿”就是指获取记账权以得到比特币作为奖励。**比特币的问题出在货币发行机制上**，挖矿者都在解一道无用的题目，表面上付出了劳动，消耗了电，但是没有产生价值，发行方没有获得任何资产以在比特币价格发生波动时来维护比特币价格的稳定。所以比特币没有办法成为一种世界范围内的货币，最终沦为了一种数字投机产品。
 
 那么Libra的出现可以给我们带来一些什么启示，Libra是如何做的以试图成为一种无国界货币，Libra可以有效的避免及解决比特币存在的问题吗？
 
@@ -18,32 +18,42 @@
 
 ## 读《The Libra Blockchain》
 
-本小节大体是要披着探讨经济的外壳来聊技术了
+本小节大体是要披着探讨经济的外壳来聊技术了，如果你对此不感兴趣，那就快速的浏览下并直接奔向总结部分吧。
 
-在这一小节我们将对Libra的区块链有基本理解，重点关注两个问题：
+在这一小节我们将对Libra区块链有基本理解，重点关注两个问题：
 
 1. 如何达成共识，如何在区块链中记账
 2. 如何借助区块链达成一笔交易
 
 
 
+### 共识协议
 
-
-
-
-
+Libra区块链的两个核心概念是状态(State)和交易(Transaction)，且状态由交易驱动：
+$$
+S_N=F(S_{N-1},T_N) \tag{1}
+$$
+式（1）中$F$是一个确定性函数，即每次输入相同的$S_{N-1}$和$T_N$,$F$都会返回同一个状态$S_N$，驱动示意如下图所示：
 
 ![see this image](https://developers.libra.org/docs/assets/illustrations/transactions.svg)
 
 
 
+首先我们先对区块链网络有个基本认知，整个区块链网络由多个被授权的validator节点组成，底层基于一个单版本分布式数据库（single-versioned distributed database），某一个状态Sn包含了区块链中所有账号的信息，那么每一个validator节点在执行交易的时候，就需要同步到状态的最后一个版本;具体而言，一个验证节点如下图所示：
+
+![validator node](https://developers.libra.org/docs/assets/illustrations/validator.svg)
+
+```mermaid
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    John-->>Alice: Great!
+```
 
 
 
 
 
-
-从周五晚上开始，起初是读一篇讲述货币简史的文章，后来看到数字货币，便想到了facebook之前发布的Libra白皮书，带着对货币的新认知，以及对数字货币的几个问题，便探索了下Libra的设计是否足以满足人们对于货币的期待，将自己的理解感受汇总了下，有兴趣可以看下，http://disq.us/t/3klx025。
+BTW，Libra的协议是用Move语言实现的，可能你并不关心，但是我倒是挺感兴趣的，Move到底是一个怎样的语言呢，这个我会单独再写篇文章探讨下。
 
 
 
@@ -83,6 +93,6 @@
 
 ## reference
 
-- [libra官网文档](https://developers.libra.org/docs/welcome-to-libra)
-- Libra白皮书[Libra white paper](https://libra.org/en-US/white-paper/#introduction)
-- Libra技术论文[The Libra Blockchain](https://developers.libra.org/docs/the-libra-blockchain-paper)
+- libra官网 [文档](https://developers.libra.org/docs/welcome-to-libra)
+- Libra白皮书 [Libra white paper](https://libra.org/en-US/white-paper/#introduction)
+- Libra技术论文 [The Libra Blockchain](https://developers.libra.org/docs/the-libra-blockchain-paper)
