@@ -159,3 +159,11 @@ BTW，Libra的协议是用Move语言实现的，可能你并不关心，不过�
 - libra官网 [文档](https://developers.libra.org/docs/welcome-to-libra)
 - Libra白皮书 [Libra white paper](https://libra.org/en-US/white-paper/#introduction)
 - Libra技术论文 [The Libra Blockchain](https://developers.libra.org/docs/the-libra-blockchain-paper)
+
+
+
+## 新年礼物
+
+现在还能看到的，肯定是我的至交了，受人启发，留言告诉我（或者<a href="mailto:chengcx1019@gmail.com">邮件</a>）你想看的一本书，或者干脆就是想让我送你一本书，新的一年，愿有所得，进一分自有进一分的欢喜。
+
+> 截止28号晚上我就要删掉了^_^
