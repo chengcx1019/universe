@@ -1,5 +1,3 @@
-# python中的延迟
-
 > python版本3.5.2
 
 python提供了工具在需要时才产生结果，即一次产生一个结果项，而不是在内存中一次产生全部结果列表。
@@ -161,7 +159,7 @@ def mymap(func,*seqs):
 ```
 
 ```Python
-# 或者是更简洁的列表解析式的表达,
+或者是更简洁的列表解析式的表达,
 def mymap(func,*seqs):
     return [func(*args) for args in zip(*seqs)]
 >>>mymap(abs, [-2, -1, 0, 1, 2])
@@ -170,11 +168,11 @@ def mymap(func,*seqs):
 [1, 8, 81]
 ```
 ```Python
-# 上面的实现和实际的map略有差异，更优的方案是通过生成器函数和生成器表达式来返回结果
+上面的实现和实际的map略有差异，更优的方案是通过生成器函数和生成器表达式来返回结果
 def mymap(func,*seqs):
     for args in zip(*seqs):
         yield func(*args)
-# 生成器表达式
+生成器表达式
 def mymap(func,*seqs):
     return (func(*args) for args in zip(*seqs))
 >>>mymap(abs, [-2, -1, 0, 1, 2])
@@ -207,14 +205,14 @@ def myzip(*seqs):
 ```
 
 ```python
-# 使用生成器函数表达
+使用生成器函数表达
 def myzip(*seqs):
     seqs = [list(S) for S in seqs]
     while all(seqs):
         yield tuple(S.pop(0) for S in seqs)
 ```
 ```python
-# 结合map实现zip
+结合map实现zip
 def myzip(*args):
     iters = list(map(iter, args))
     while iters:
@@ -232,9 +230,9 @@ def myzip(*args):
 用法：`filter(function, iterable)`，从可迭代对象iterable中取出function返回`True`的元素构造的迭代器，等价表达：
 
 ```python
-# if function is not None
+if function is not None
 (item for item in iterable if function(item))
-# if function is None
+ if function is None
 (item for item in iterable if item)
 ```
 
@@ -332,7 +330,7 @@ dict_values([2, 1, 3])
 dict_items([('b', 2), ('a', 1), ('c', 3)])
 ```
 
-Hello
+
 
 ```Python
 >>>D = dict(a=1, b=2, c=3)
@@ -341,5 +339,3 @@ False
 >>>for key in D:print(key, end=' ')
 b a c
 ```
-
-Hello
