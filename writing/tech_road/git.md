@@ -224,6 +224,27 @@ diff的起点是两个分支的公共父节点（即commit）
 
 
 
+### 生活小妙招
+
+```
+对于 commit 添加 jira 号，分享一个生活小妙招：
+
+1. 对于项目的任意分支，添加分支描述 （git branch --edit-description），描述中包含 jira 号（例如 https://jira.nevint.com/browse/SAS-14430）
+2. 在项目的 .git/hooks/ 目录下，新建 prepare-commit-msg 文件，添加如下内容：
+
+ #!/bin/sh
+
+ jira=`git config branch.$(git rev-parse --abbrev-ref HEAD).description|egrep -io "SAS-[[:digit:]]{1,6}"`
+ if [ $jira ]; then
+     echo "($jira)" >> "$1"
+ fi
+
+以后 commit 的时候就会自动把 jira 号添加到 commit，供参考
+
+```
+
+
+
 ### others
 
 两个共同历史的分支进行合并:git pull origin branchname --allow-unrelated-histories

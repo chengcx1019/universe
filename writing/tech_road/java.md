@@ -8,6 +8,8 @@
 
 第2条：遇到多个构造器参数时要考虑使用构建器  
 
+
+
 第3条：用私有构造器或者枚举类型强化Singleton属性  
 
 第4条：通过私有构造器强化不可实例化的能力  
@@ -312,6 +314,155 @@ java程序语言设计的锁是可重入的
 ## 附录　与第2版中条目的对应关系  286
 
 ## 参考文献  289
+
+
+
+
+
+
+
+
+
+
+
+## spring指南
+
+依赖注入(dependecy injection,Di)和面向切面编程(aspect-oriented programming,AOP)
+
+### DI
+
+自动化装配
+
+- 组件扫描（component scan）：Spring自动发现应用上下文中的bean
+- 自动装配（autowiring）：spring自动满足bean之间的依赖
+
+#### 容器
+
+`BeanFactory`和`ApplicationContext`
+
+### AOP
+
+把横切关注点（cross-cutting concern）和业务逻辑相分离正式面向切面编程解决的问题
+
+AspectJ是另一种流行的AOP实现，他是Spring AOP的补充
+
+
+
+#### 面向切面术语
+
+AOP已经形成了自己的术语。描述切面的常用术语有通知（advice）、切点（pointcut）和连接点（joinpoint）
+
+![image-20191017115730481](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20191017115730481.png)
+
+- advice(通知)
+
+  通知定义了切面"做什么"及"何时做"
+
+  - before(前置通知)：在目标方法被调用之前调用通知功能
+  - after(后置通知)：在目标方法完成之后调用通知
+  - after-returning(返回通知)：在目标方法成功执行之后调用通知
+  - after-throwing(异常通知)：在目标方法抛出异常之后调用通知
+  - around(环绕通知)：通知包裹了被通知的方法，在被通知的方法调用之前和调用之后执行自定义的行为
+
+- pointcut(切点)
+
+  缩小切面所通知的连接点范围
+
+  spring借助AspectJ的切点表达式语言来定义Spring切面
+
+  | AspectJ指示器 | 描述                                                 | 示例 | 解释 |
+  | ------------- | ---------------------------------------------------- | ---- | ---- |
+  | arg()         | 参数为指定类型的方法                                 |      |      |
+  | @args()       | 参数由指定注解标注的执行方法                         |      |      |
+  | execution     | 是连接点的执行方法                                   |      |      |
+  | this()        | AOP代理的bean引用为指定类型的类                      |      |      |
+  | target        | 目标对象为指定类型的类                               |      |      |
+  | @target()     | 特定的执行对象，这些对象对应的类要具有指定类型的注解 |      |      |
+  | within()      | 指定的类型                                           |      |      |
+  | @within()     | 指定注解所标注的类型                                 |      |      |
+  | @annotation   | 带有指定注解的连接点                                 |      |      |
+
+  
+
+- join point(连接点)
+
+  应用通知的时机称为连接点。连接点是在应用执行过程中可以插入切面的一个点。这个点可以是调用方法时、抛出异常时，甚至可以是修改一个字段时
+
+最后我们回到切面的定义，切面是通知和切点的结合。通知和切点共同定义了切面的全部内容-他是什么，在何时和何处完成其功能。
+
+总结一下切点定义了哪些连接点会得到通知
+
+### sprint Boot
+
+> spring boot衣spring的视角，致力于简化spring本身，它大量依赖于**自动配置技术**，能够消除大部分的Spring配置
+
+什么是sprint boot，怎样使用spring boot
+
+Sprint boot是怎样实现自动配置
+
+
+
+
+
+### reference
+
+依赖注入：DhanjiR.Prasanna的《DependencyInjection》
+
+AspectJ：RamnivaLaddad编写的《AspectJinAction》第二版（Manning，2009，www.manning.com/laddad2/）
+
+
+
+## 面向对象
+
+继承和委托
+
+
+
+## 并发
+
+sprint boot并发控制
+
+django并发控制
+
+
+
+
+
+
+
+通过new表达式时需要实现抽象的方法
+
+
+
+匿名内部类，使用一个在外部定义的对象，编译器要求参数引用必须是final的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

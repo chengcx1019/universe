@@ -612,7 +612,7 @@ SVM原理及细节，SVM和树模型的异同以及优缺点和局限性。
         while start*2 < m and start*2 <n:
             print_circle(nums, m, n, start, result)
             start += 1
-     
+    
     def print_circle(nums, m, n, start, result):
         row = m - start*2
         col = n - start*2
@@ -964,11 +964,11 @@ def permutation(nums: list):->list
 
 - 最坏时间复杂度是O(nlogn)的是
 
-  |          |           |           |
-  | -------- | --------- | --------- |
-  | 选择排序 | shell排序 | 插入排序  |
-  | 归并排序 | 快速排序  | 堆排序    |
-  | 冒泡排序 | comb sort | -cocktail |
+  |          |           |          |
+  | -------- | --------- | -------- |
+  | 选择排序 | shell排序 | 插入排序 |
+  | 归并排序 | 快速排序  | 堆排序   |
+  | 冒泡排序 | comb sort | cocktail |
 
 
 
@@ -1013,7 +1013,7 @@ def bubble_sort(nums):
 
 
 
-选择排序：找到数组中最大活着最小的数，之后将其放在排序数组的正确位置
+选择排序：找到数组中最大或者最小的数，之后将其放在排序数组的正确位置
 
 ```python
 def selection_sort(nums):
@@ -1042,7 +1042,7 @@ def shell_sort(nums, step):
 
 
 
-插入排序：从第二个数字开始依次与前面排好序的子数组序列进行比较
+插入排序：从第二个数字开始依次与前面排好序的子数组序列进行比较(代码示例为逆序)
 
 ```python
 def insert_sort(nums):
@@ -1050,7 +1050,7 @@ def insert_sort(nums):
         for j in range(i):
             if nums[i] > nums[j]:
                 tmp = nums[i]
-                nums[j+1, i+1] = nums[j:i]
+                nums[j+1: i+1] = nums[j:i]
                 nums[j] = tmp
 ```
 
@@ -1109,6 +1109,14 @@ def quick_sort(nums, start, end):
         pivot_pos = partition(nums, start, end)
         quick_sort(nums, start, pivot_pos-1)
         quick_sort(pivot_pos+1, start, end)
+```
+
+
+
+堆排序
+
+```python
+
 ```
 
 
