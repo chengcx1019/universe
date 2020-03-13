@@ -90,9 +90,13 @@ V1作为提议者，consensus组件
 从内存池中提取一个由一些事物组成的区块，
 并把这个区块共享给其他验证节点
 end note
+
+group 与其他节点交互进行一致性验证
 con->v: 将区块共享给其他节点
 v->con:反馈结果
 con->con: 根据LibraBFT判断选举结果
+end
+
 alt 异步执行
 exe->vm: 操作交易
 vm-->exe:操作完成
