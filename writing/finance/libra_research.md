@@ -97,7 +97,7 @@ v->con:反馈结果
 con->con: 根据LibraBFT判断选举结果
 end
 
-alt 异步执行
+group 异步执行
 exe->vm: 操作交易
 vm-->exe:操作完成
 end

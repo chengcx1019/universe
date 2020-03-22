@@ -19,10 +19,20 @@ entity company_stock {
 公司代码
 股票代码
 上市交易所
-股价
-年分
-季度
-月
+时间
+open
+high
+low
+close
+市值
+流通股份
+利润
+每股收益
+资产（账面净资产）
+}
+
+entity company_detail{
+
 }
 
 entity inflation_rate{
@@ -34,12 +44,9 @@ entity inflation_rate{
 @enduml
 ```
 
-
-```uml
-@startuml
-
-(*) --> "物品与服务市场"
-"生产要素市场" --> (*)
-
-@enduml
-```
+数据存储模式很重要，如何兼容多种数据导入模式
+支持灵活定义的数据存储方式
+每天更新数据，数据源，数据爬取
+定时任务管理
+https://github.com/PanJiaChen/vue-element-admin
+https://github.com/Jack-Cherish/python-spider
