@@ -153,6 +153,7 @@ Rust 提供了用于消息传递的通道，和像 `Mutex<T>` 和 `Arc<T>` 这�
 ## Go
 
 Go语言有一句箴言：**不要通过共享内存来通信，而应该通过通信来共享内存**。Go中有两个定义需要着重理解，**Goroutine**和**Channel**：
+
 - Goroutine：在Go中，每一个并发的执行单元叫作一个goroutine
 - Channel：goroutine是Go中并发的执行体，那么通道就是它们之间的连接，通道是可以让一个goroutine发送特定值到另一个goroutine的通信机制，后面将不对Go的channel进行介绍，重点介绍使用共享变量实现并发的方式。
 
@@ -208,9 +209,62 @@ Go针对不同的使用场景定义了几种不同的锁，`sync.Mutex`互斥锁
 
 > Java的部分值得单独整理，3.28-3.29的周末两天找时间集中处理下，也会在每天的间隙补充一些零散的内容
 
-用并发解决的问题大体上可以分为速度和设计可管理性。
+首先来看 Java 中的线程定义，然后看 Java 设计了什么机制来解决共享资源的竞争
 
-如果没有任务会阻塞，那么在单处理器上使用并发就没有任何意义。
+
+
+### Java 线程
+
+在 Java 中，要想定义任务，只要实现 `Runnable` 接口并编写 `run()` 方法，使得该任务可以执行你的命令：
+
+```java
+public class SomeJob implements Runnable{
+  public void run(){
+    // do something here
+  }
+}
+```
+
+将Runnable对象转变为工作任务的传统方式是把它提交给一个Thread构造器,Thread构造器只需要一个Runnable对象。调用Thread对象的start()方法为该线程执行必需的初始化操作，然后调用Runnable的run()方法，以便在这个新线程中启动该任务。但仅仅是启动线程而已，主线程没有义务等待新线程执行完毕。
+
+`java.util.concurrent` 包提供了执行器 `Executor` 管理 `Thread` 的对象。
+
+
+
+- 从任务中产生返回值
+
+`Runnable` 是执行工作的独立任务，但是它不返回任何值。如果你希望任务在完成时能够返回一个值，那么实现 ` Callable` 接口而不是 `Runnable` 接口，`Callable` 是一个具有类型参数的泛型，它的类型表示的是从方法 `call()`中返回的值，必须使用`ExecutorService.submit()` 方法调用它，`submit()` 方法会生产`Future`对象，可以使用 `isDone` 方法查询 `Future` 是否已经完成，当任务完成时，它具有一个结果，可以调用 `get()`方法来获取该结果。
+
+
+
+- 线程指令的语意
+
+  比如 start yield join 等
+
+  `yield通知其他具有相同优先级的线程可以运行
+
+  `join` 一个线程可以在其他线程之上调用 `join` 方法，其效果是等待一段时间直到第二个线程结束才继续执行
+
+  
+
+### 解决共享资源竞争
+
+原子性和可视性
+
+运用 `Brain` 同步规则：
+
+如果你正在写一个变量，它可能接下来将被另一个线程读取，或者正在读取一个上一次已经被另一个线程写过的变量，那么必须使用同步，并且，读写线程都必须使用相同的监视器同步。
+
+
+
+
+
+java 以提供关键字 `synchronized` 及 `volatile`  的形式，为防止资源冲突提供了内置的支持。
+
+- `synchronized`
+- `volatile` : 可以获得简单的赋值与返回操作的原子性，`volatile` 会立即写入内存中
+
+Java还包括显式的互斥机制，这中机制相比 `synchronized` 的优势是，某些操作失败后，可以使用 `finally`子句将系统维护在正确的状态。
 
 
 
