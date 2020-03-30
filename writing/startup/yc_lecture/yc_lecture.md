@@ -5,7 +5,7 @@
 ## 目录
 
 - 1[为什么要创业](/postDetail/%2Fblog%2Fapi%2Fycchuang-ye-ke-01-wei-shi-yao-yao-chuang-ye,57%2F)
-- 2团队与执行
+- 2[团队与执行](/postDetail/%2Fblog%2Fapi%2Fycchuang-ye-ke-02-tuan-dui-yu-zhi-xing,60%2F) 
 - 3创业中违反直觉的地方
 - 4如何积累初期用户
 - 5公司战略与竞争
