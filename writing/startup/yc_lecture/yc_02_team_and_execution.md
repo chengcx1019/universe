@@ -1,4 +1,4 @@
-> 在第一课中，Sam 在第一张 ppt 中列出了创业中重要的4个方面 idea, product, team, execution ,并分享了对 idea 和 product的看法，在第二课中，Sam 继续主讲，带来对组件创始团队和执行的一些思考；这节课没有嘉宾。
+> 在第一课中，Sam 在第一张 ppt 中列出了创业中重要的4个方面 idea, product, team, execution ,并分享了对 idea 和 product的看法，在第二课中，Sam 继续主讲，带来对组建创始团队和执行的一些思考；这节课没有嘉宾。
 
 
 

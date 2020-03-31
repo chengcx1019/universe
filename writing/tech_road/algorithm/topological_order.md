@@ -79,4 +79,138 @@ function visit(节点 n)
 
 
 
-> 待早上起来实现一版
+python 示例:
+
+图定义：
+
+```python
+class State(Enum):
+    unvisited = 0  # white，顶点还未访问
+    visiting = 1  # gray，顶点已被访问，但还存在未访问的邻接顶点
+    visited = 2  # black，顶点已被访问，且所有邻接顶点都被访问
+
+
+class Node(object):
+
+    def __init__(self, key):
+        self.key = key
+        self.visit_state = State.unvisited
+        self.incoming_edges = 0
+        self.adj_nodes = {}  # Key = key, val = Node
+        self.adj_weights = {}  # Key = key, val = weight
+
+    def add_neighbor(self, neighbor, weight=0):
+        if neighbor is None or weight is None:
+            raise TypeError('neighbor or weight cannot be None')
+        self.incoming_edges += 1
+        self.adj_weights[neighbor.key] = weight
+        self.adj_nodes[neighbor.key] = neighbor
+
+    def remove_neighbor(self, neighbor):
+        if neighbor is None:
+            raise TypeError('neighbor cannot be None')
+        if neighbor.key not in self.adj_nodes:
+            raise KeyError('neighbor not found')
+        self.incoming_edges += 1
+        del self.adj_nodes[neighbor.key]
+        del self.adj_weights[neighbor.key]
+
+
+class Graph(object):
+
+    def __init__(self, ):
+        self.nodes = {}
+
+    def add_node(self, key):
+        if key is None:
+            raise TypeError('key cannot be None')
+        if key not in self.nodes:
+            self.nodes[key] = Node(key)
+        return self.nodes[key]
+
+    def add_edge(self, source_key, dest_key, weight=0):
+        if source_key is None or dest_key is None:
+            raise KeyError('Invalid key')
+        if source_key not in self.nodes:
+            self.add_node(source_key)
+        if dest_key not in self.nodes:
+            self.add_node(dest_key)
+        self.nodes[source_key].add_neighbor(self.nodes[dest_key], weight)
+
+    def add_undirected_edge(self, source_key, dest_key, weight=0):
+        if source_key is None or dest_key is None:
+            raise KeyError('Invalid key')
+        self.add_edge(source_key, dest_key, weight)
+        self.add_edge(dest_key, source_key, weight)
+```
+
+
+
+图深度优先遍历：
+
+```python
+class GraphDfs(Graph):
+
+    def __init__(self, ):
+        super(GraphDfs, self).__init__()
+        self.pred = {}
+        self.discovered = {}  # 第一次访问该顶点计数器的值
+        self.finished = {}  # 完成该顶点的深度优先搜索后计数器的值
+        self.count = 0  # 计数器
+
+    def dfs(self, root, visit_func):
+        if root is None:
+            return
+        for node in self.nodes.values():
+            self.pred[node.key] = -1
+            self.discovered[node.key] = -1
+            self.finished[node.key] = -1
+
+        visit_func(self.nodes[root])
+        # 针对非连通图而言
+        for node in self.nodes.values():
+            if node.visit_state == State.unvisited:
+                visit_func(node)
+
+    # 对于每一节点，访问开始时标记为灰色，递归访问完所有的邻接节点后标记为黑色
+    def dfs_visit(self, current_node):
+        current_node.visit_state = State.visiting
+        self.count += 1  # 开始访问顶点及顶点访问结束均需要累加计数器
+        self.discovered[current_node.key] = self.count
+        for node in current_node.adj_nodes.values():
+            if node.visit_state == State.unvisited:  # 如果顶点是不是white，那么当前顶点就会知道该邻接顶点已被或正在被访问
+                self.pred[node.key] = current_node.key
+                self.dfs_visit(node)
+        current_node.visit_state = State.visited
+        self.count += 1  # 开始访问顶点及顶点访问结束均需要累加计数器
+        self.finished[current_node.key] = self.count
+```
+
+
+
+有向无环图的拓扑排序：
+
+```python
+class DAGTopSort(GraphDfs):
+
+	def __init__(self):
+		super(DAGTopSort, self).__init__()
+		self.top_sort = []
+
+	def make_top_sort(self, current_node):
+		current_node.visit_state = State.visiting
+		self.count += 1  # 开始访问顶点及顶点访问结束均需要累加计数器
+		self.discovered[current_node.key] = self.count
+		for node in current_node.adj_nodes.values():
+			if node.visit_state == State.unvisited:  # 如果顶点是不是white，那么当前顶点就会知道该邻接顶点已被或正在被访问
+				self.pred[node.key] = current_node.key
+				self.make_top_sort(node)
+		current_node.visit_state = State.visited
+		self.top_sort.append(current_node.key)
+		self.count += 1  # 开始访问顶点及顶点访问结束均需要累加计数器
+		self.finished[current_node.key] = self.count
+```
+
+
+
+> 完整代码已上传 [github](https://github.com/chengcx1019/architecture/blob/master/algorithm/basic/graph/topplogical_sort.py)
