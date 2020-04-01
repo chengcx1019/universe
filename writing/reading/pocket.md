@@ -72,9 +72,40 @@
 
 如何提高打字速度的同时减少错误？作者建议是形成像钢琴家一样的肌肉记忆，这个需要长期的练习，但还是那句话，无论从何时开始都不晚，重要是找到一个正确的方式，并立即开始实践。你可能会问，什么是正确的方式，如果你不是很确定，也不是很认同其他人，那就找一种普遍被认可的标准，在操作的过程中，找到适合自己的方式，但不要从一开始就否定所有的可能性。
 
-Keybr.com 就是这样一个帮助你提升打字效率的网站，它有三个要点：一是选择语言中的常用词组进行练习，二是针对你不熟练的组合提供更多的练习，三是根据学习进度，不断扩大所需的键位，提供更大范围的练习。
+[Keybr.com](Keybr.com) 就是这样一个帮助你提升打字效率的网站，它有三个要点：一是选择语言中的常用词组进行练习，二是针对你不熟练的组合提供更多的练习，三是根据学习进度，不断扩大所需的键位，提供更大范围的练习。
 
 可以选择英语开始练习，以熟悉键位为主。
 
 
 
+***
+
+### 20200401
+
+
+
+#### [WAPI RADIO](https://wapi.fm/) 
+
+一个只播放24小时的广播，邀请嘉宾谈论建立人们喜欢的开发者体验，有意思的一点是，只有开始按钮，没有进度条可供拖动。
+
+
+
+#### [微服务架构的安全模式](https://developer.okta.com/blog/2020/03/23/microservice-security-patterns) 
+
+安全微服务架构的11种模式：
+
+1. Be Secure by Design：通过设计确保安全
+2.  Scan Dependencies：扫描依赖以发现其中潜在的风险
+3. Use HTTPS Everywhere：任何使用http的地方都应该替换为[https](https://howhttps.works/) ，免费的证书可以使用*Let’s Encrypt* ，这正是目前我在使用的
+4. Use Access and Identity Tokens
+5. Encrypt and Protect Secrets
+6. Verify Security with Delivery Pipelines
+7.  Slow Down Attackers
+8.  Use Docker Rootless Mode
+9.  Use Time-Based Security
+10. Scan Docker and Kubernetes Configuration for Vulnerabilities
+11. Know Your Cloud and Cluster Security
+
+
+
+> 目前只读到第3条，后面的条目信息量较大，明天碎片时间继续阅读
