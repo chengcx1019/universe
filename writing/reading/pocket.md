@@ -109,3 +109,36 @@
 
 
 > 目前只读到第3条，后面的条目信息量较大，明天碎片时间继续阅读
+
+
+
+***
+
+### 20200402
+
+
+
+#### [请不要再用 markdown 来写你的文档了](https://buttondown.email/hillelwayne/archive/please-dont-write-your-documentation-in-markdown/) 
+
+这篇可以不用点进去，价值不大，我完全是被这个标题吸引进来的；作者认为 markdown只适合编写短文档，而不适合作为工作工具使用，看下来这篇短文的作者对 markdown的使用还是流于入门，肯定不知道 Typora 的存在， 在这里强推一波 [Typora](https://typora.io/) ，一款简约而不简单，让你专注于写作的 markdown 工具，唯一的缺憾是未集成版本管理功能，对比文件 diff 需要在别的软件中进行，不过 Typora 官方也对此进行了解释，版本管理别的软件有做，typora 无意开发这种重复功能，只想专注于提升用户写作体验本身，事实如此，相对它的优点来说，者点缺憾是完全可以接受的。
+
+
+
+#### [12个最好的机器学习音频数据集](https://lionbridge.ai/datasets/12-best-audio-datasets-for-machine-learning/) 
+
+
+
+#### [常用的医疗 AI 算法](https://rubikscode.net/2020/03/16/top-ai-algorithms-in-healthcare/) 
+
+最长在医疗领域常用的算法如下：
+
+- 支持向量机
+- 神经网络
+- 逻辑回归
+- 判别分析
+- 随机森林
+- 线性回归
+- 朴素贝叶斯
+- K 近邻
+
+目前该领域的问题面临的又要问题是信息安全问题，很多数据由于隐私原因而不能用于训练学习。
