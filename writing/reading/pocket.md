@@ -176,3 +176,14 @@ YC创业课第三讲讲稿，看下来会比听视频课讲的更细致性，但
 - 用真实世界的物体遮挡虚拟物
 - 实现虚拟对象与物理对象之间的现实交互
 
+
+
+***
+
+### 20200405
+
+
+
+#### [我们如何减少使用 Google Map API 94% 的费用](https://blog.cityflo.com/how-we-reduced-our-google-maps-api-cost/) 
+
+需要指出的一点是，这家公司可以做到如此大的缩减是两个原因导致的，第一前期的实现实在是太过糟糕，第二公司面向的服务固定路线的巴士的 ETA(Expected Time of Arrival) 的计算，这两点意味着有心优化就可以大幅减少对 Google Map API 的调用。
