@@ -187,3 +187,27 @@ YC创业课第三讲讲稿，看下来会比听视频课讲的更细致性，但
 #### [我们如何减少使用 Google Map API 94% 的费用](https://blog.cityflo.com/how-we-reduced-our-google-maps-api-cost/) 
 
 需要指出的一点是，这家公司可以做到如此大的缩减是两个原因导致的，第一前期的实现实在是太过糟糕，第二公司面向的服务固定路线的巴士的 ETA(Expected Time of Arrival) 的计算，这两点意味着有心优化就可以大幅减少对 Google Map API 的调用。
+
+
+
+***
+
+### 20200406
+
+
+
+#### [斯坦福开设的变成入门课](https://compedu.stanford.edu/codeinplace/announcement/) 
+
+如果你对变成感兴趣，又没有任何基础，那么赶快去这门课程看看吧，程面向的群体是任何可以上网的人，没有学分的要求，课程的最终目的就是帮你掌握编程的技能。
+
+
+
+#### [线上博物馆](https://virtualmuseums.io/) 
+
+足不出户，游历天下，我已经开启卢浮宫之旅了。
+
+
+
+#### [在低温测试中，SpaceX失去了它的第三个星际飞船原型](https://arstechnica.com/science/2020/04/spacex-loses-its-third-starship-prototype-during-a-cryogenic-test/) 
+
+SpaceX 星舰原型机在第三次压力测试下瓦解视频，自上周四失败以来，目前暂时未看到失败原因的发布。这样的失败已经被纳入了一个不断迭代更新测试的闭环中，预计新一次的测试将在4月底展开
