@@ -53,6 +53,26 @@ module/struct/procedure类比面向对象class/object/method，但是一个modul
 
 ## 一致性协议——LibraBFT
 
+LibraBFT的设计来源于团队的信念，这种信念认为依赖于同步的安全性具有内在的复杂性和面对 DoS 攻击的脆弱性
+
+
+
+Nakamoto consensus 中本一致性
+
+
+
+
+
+法定人数为$n=3f+1$ ,如果超过$f$ 个成员失效，协议无法维系
+
+
+
+扩展一个可编程资源的复制数据库
+
+
+
+Libra block chain 存储的物理结构是什么，逻辑结构是什么
+
 
 
 

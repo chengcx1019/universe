@@ -24,6 +24,10 @@ resource的类型是`0x56.Currency.T`
 
 
 
+
+
+
+
 ### Transaction
 
 客户端通过提交交易来改变账号状态
