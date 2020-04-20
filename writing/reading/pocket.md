@@ -6,6 +6,14 @@
 
 ***
 
+### 20200420
+
+#### [500门免费线上计算机科学课程](https://www.freecodecamp.org/news/free-courses-top-cs-universities/) 
+
+希望在大学的自己可以看到这份资源，那时可以有更多空闲的时间学习。
+
+***
+
 ### 20200415
 
 咳咳，兰尼斯特有债必偿
