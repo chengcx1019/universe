@@ -6,6 +6,14 @@
 
 ***
 
+### 20200424
+
+#### [关于发射人造卫星致周恩来总理的一封信](https://pan.cstcloud.cn/web/share.html?hash=eTjLd6yQ1Q) 
+
+每次看到这样的历史资料，内心总会一阵感动，许多事情，能够成事的关键都在人为，一个人用自己的真诚、远见不遗余力的推动一件事的实现。
+
+***
+
 ### 20200420
 
 #### [500门免费线上计算机科学课程](https://www.freecodecamp.org/news/free-courses-top-cs-universities/) 
