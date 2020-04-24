@@ -187,7 +187,7 @@ class GraphDfs(Graph):
         self.count += 1  # 开始访问顶点及顶点访问结束均需要累加计数器
         self.discovered[current_node.key] = self.count
         for node in current_node.adj_nodes.values():
-            if node.visit_state == State.unvisited:  # 如果顶点是不是white，那么当前顶点就会知道该邻接顶点已被或正在被访问
+            if node.visit_state == State.unvisited:  # 如果顶点不是white，那么当前顶点就会知道该邻接顶点已被或正在被访问
                 self.pred[node.key] = current_node.key
                 self.dfs_visit(node)
         current_node.visit_state = State.visited
@@ -211,7 +211,7 @@ class DAGTopSort(GraphDfs):
 		self.count += 1  # 开始访问顶点及顶点访问结束均需要累加计数器
 		self.discovered[current_node.key] = self.count
 		for node in current_node.adj_nodes.values():
-			if node.visit_state == State.unvisited:  # 如果顶点是不是white，那么当前顶点就会知道该邻接顶点已被或正在被访问
+			if node.visit_state == State.unvisited:  # 如果顶点不是white，那么当前顶点就会知道该邻接顶点已被或正在被访问
 				self.pred[node.key] = current_node.key
 				self.make_top_sort(node)
 		current_node.visit_state = State.visited
