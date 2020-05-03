@@ -4,6 +4,22 @@
 
 ## 内容概要列表及简评
 ***
+### 20200503
+
+#### 巴菲特给年轻人的忠告，在访谈中，他谈了十条自己成功的经验：#2020巴菲特股东大会# 
+
+1.找到自己的激情（find your passion）；
+2.雇佣人的标准：正直，聪明，精力充沛（integrity, intelligence, energy）；
+3.不在乎别人的眼光（don't care what others think）；
+4.每天读书五六个小时（read, read, read）；
+5.尊重安全边际（margin of safety）；
+6.必须要有自己的竞争优势（have a competitive advantage）；
+7.找到自己独有的步伐（schedule for your personality）；
+8.永不自满（always be competing）；
+9.找到一个榜样（model success）；
+10.给予无条件的爱（give unconditional love）
+
+***
 ### 20200502
 
 #### [价值投资书单](https://weibo.com/ttarticle/p/show?id=2309404500202676420624) 
@@ -18,10 +34,6 @@
 8. 费雪《怎样选择成长股》
 9. 莫尼什•帕伯莱《憨夺型投资者》
 10. 华衫《华衫讲透孙子兵法》
-
-
-
-
 
 ***
 
