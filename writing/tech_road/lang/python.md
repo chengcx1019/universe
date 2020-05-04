@@ -8,6 +8,14 @@ python中一个比较明确的问题但是不知道却会引起很多问题的po
 
 # python
 
+
+
+### 
+
+
+
+
+
 ## 最佳实践
 
 使用pyenv管理python版本
@@ -19,6 +27,16 @@ pyenv deactivate
 pyenv uninstall {your-env-name} or pyenv virtualenv-delete {your-env-name}  
 
 > Removing the directories in\$(pyenv root)/versions and $(pyenv root)/versions/{version}/envs will delete the virtualenv
+
+
+
+### 
+
+
+
+
+
+
 
 ### jupyter
 

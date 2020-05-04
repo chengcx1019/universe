@@ -175,6 +175,20 @@ Collections.sort(words,
 
 
 
+Operator 接口代表其结果与参数类型一致的函数
+
+Predicate 接口代表有一个参数并返回一个 boolean 的函数
+
+Function 接口代表其参数与返回类型不一致的函数
+
+Supplier 接口代表没有参数并且返回（或“提供”）一个值的函数
+
+Consumer 接口代表的是带有一个函数但不返回任何值的函数
+
+
+
+
+
 
 
 
