@@ -8,7 +8,7 @@
 - 2[团队与执行](/postDetail/%2Fblog%2Fapi%2Fycchuang-ye-ke-02-tuan-dui-yu-zhi-xing,60%2F) 
 - 3[创业中违反直觉的地方](/postDetail/%2Fblog%2Fapi%2Fycchuang-ye-ke-03-chuang-ye-zhong-wei-fan-zhi-jue-de-di-fang,62%2F) 
 - 4[如何积累初期用户](/postDetail/%2Fblog%2Fapi%2Fycchuang-ye-ke-04-ru-he-lei-ji-chu-qi-yong-hu,65%2F) 
-- 5公司战略与竞争
+- 5[商业策略和垄断理](https://changxin10m.com/postDetail/%2Fblog%2Fapi%2Fycchuang-ye-ke-05-shang-ye-ce-lue-he-long-duan-li,69%2F) 
 - 6如何获得用户量的增长
 - 7打造用户热爱的产品
 - 8创业公司如何公关
