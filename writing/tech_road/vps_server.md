@@ -12,6 +12,8 @@ install nginx:`apt install nginx`
 
 install mysql
 
+
+
 install pyenv,[pyenv-virtualenvs](https://github.com/pyenv/pyenv-virtualenv)
 
 v=3.8.2;wget https://npm.taobao.org/mirrors/python/$v/Python-$v.tar.xz -P ~/.pyenv/source/$v;pyenv install $v 
