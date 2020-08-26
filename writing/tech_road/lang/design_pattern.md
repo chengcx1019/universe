@@ -98,7 +98,7 @@
 
 取决于可见的非稳定性，将接口和实现分离，封装不稳定的实现，暴露稳定的接口。	
 
-### 为何要多用组合少用继承？如何决定该用组合还是继承？
+#### 为何要多用组合少用继承？如何决定该用组合还是继承？
 
 继承最大的问题在于，继承层次过深、继承关系过于复杂会影响到代码的可读性和可维护性。
 
@@ -194,9 +194,7 @@
 
 #### 需要理清下面的问题：
 
-- 重构是什么、为什么重构
-
-- 重构什么
+- 重构是什么、为什么重构、重构什么
 
 - 什么时候重构
 
@@ -229,13 +227,31 @@
 
 ## 代码重构
 
+重构是一种对软件内部结构的改善，目的是在不改变软件的可见行为的情况下，使其更易理解，修改成本更低。"重构不改变外部的可见行为"可以理解为"在保持功能不变的前提下，利用设计思想、原则、模式、编程规范等理论来优化代码，修改设计上的不足，提高代码质量"
+
+
+
 使用设计模式可以提高代码的可扩展性，但过度不恰当地使用，也会增加代码的复杂度，影响代码的可读性。
 
 - 明确重构的目的（why）、对象（what）、时机（when）、方法（how）
 - 保证重构不出错的技术手段：单元测试和代码的可测试性
 - 两种不同规模的重构：大重构（大规模高层次）和小重构（小规模低层次）
 
-重构的目的、对象、时机、方法
+
+
+
+
+#### 重构四要素
+
+- 目的
+  1. 重构是时刻保证代码质量的一个极其有效的手段，不至于让代码腐化到无可救药的地步
+  2. 优秀的代码或架构不是一开始就能完全设计好的，我们无法 100% 遇见未来的需求，也没有足够的精力、时间、资源为遥远的未来买单，所以，随着系统的演进，重构代码也是不可避免的
+  3. 重构是避免过度设计的有效手段。在我们维护代码的过程中，真正遇到问题的时候，再对代码进行重构，能有效避免前期投入太多时间做过度的设计，做到有的放矢。
+- 对象
+- 时机
+- 方法
+
+
 
 保留持续重构的意识
 
@@ -258,6 +274,49 @@
 王争《设计模式之美》
 
 
+
+```java
+
+// 非依赖注入实现方式
+public class Notification {
+  private MessageSender messageSender;
+  
+  public Notification() {
+    this.messageSender = new MessageSender(); //此处有点像hardcode
+  }
+  
+  public void sendMessage(String cellphone, String message) {
+    //...省略校验逻辑等...
+    this.messageSender.send(cellphone, message);
+  }
+}
+
+public class MessageSender {
+  public void send(String cellphone, String message) {
+    //....
+  }
+}
+// 使用Notification
+Notification notification = new Notification();
+
+// 依赖注入的实现方式
+public class Notification {
+  private MessageSender messageSender;
+  
+  // 通过构造函数将messageSender传递进来
+  public Notification(MessageSender messageSender) {
+    this.messageSender = messageSender;
+  }
+  
+  public void sendMessage(String cellphone, String message) {
+    //...省略校验逻辑等...
+    this.messageSender.send(cellphone, message);
+  }
+}
+//使用Notification
+MessageSender messageSender = new MessageSender();
+Notification notification = new Notification(messageSender);
+```
 
 
 
