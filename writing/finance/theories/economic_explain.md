@@ -1,2 +1,1 @@
-![image-20200630093351297](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20200630093351297.png)
-
+> 张五常先生自认为的大成之作，很多观点还未能完全理解，仍需多方学习后再回来体会
