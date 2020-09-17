@@ -1,5 +1,11 @@
 
 
+
+
+
+
+
+
 ## codejam
 
 比实现代码更重要的是思考问题的方式以及如何构思将要采取的方案。
@@ -91,11 +97,11 @@
 
   ```python
   def fib(n, mem: dict):
-      if n = 0 or n = 1:
+      if n == 0 or n == 1:
           return n
       if n not in mem:
           mem[n] = fib(n - 1, mem) + fib(n - 2, mem)
-      return mum[n]
+      return mem[n]
   ```
 
 - tabulation
@@ -261,6 +267,111 @@ $$
 
 - 根据前序遍历和中序遍历序列重建二叉树
 
+  ```python
+  class BinaryTreeNode(object):
+      
+      def __init__(self, data=None):
+          self.val = data
+          self.left = None
+          self.right = None
+          self.parent = None
+  
+      def __repr__(self):
+          return str(self.val)
+        
+  def construct(preorder: list, inorder: list):
+      if not preorder or not inorder or len(preorder) != len(inorder):
+          print('valid input')
+          return
+  
+      root_index = inorder.index(preorder[0])
+      root = BinaryTreeNode(preorder[0])
+      root.left = construct(preorder[1: root_index+1], inorder[:root_index])
+      root.right = construct(preorder[root_index+1:], inorder[root_index+1:])
+  
+      return root
+  ```
+
+  ```java
+  public class RebuildTree {
+      @Data
+      public static class TreeNode<T> {
+          private T value;
+          private TreeNode<T> left;
+          private TreeNode<T> right;
+      }
+  
+      public static <T> TreeNode<T> rebuildTree(List<T> pres, List<T> mids) {
+  
+          if (pres == null || mids == null) {
+              return null;
+          }
+          if (pres.size() != mids.size()) {
+              return null;
+          }
+          if (pres.size() == 0) {
+              return null;
+          }
+  
+          TreeNode<T> root = new TreeNode<>();
+          T value = pres.get(0);
+          root.setValue(value);
+          int rootMidIndex = mids.indexOf(value);
+          if (rootMidIndex == -1) {
+              throw new RuntimeException("data invalid");
+          }
+          int preEndIndex = rootMidIndex + 1;
+          List<T> preLeft = pres.subList(1, preEndIndex);
+          List<T> midLeft = mids.subList(0, rootMidIndex);
+          root.setLeft(rebuildTree(preLeft, midLeft));
+          if (rootMidIndex == mids.size() - 1) {
+              return root;
+          }
+          List<T> preRight = pres.subList(preEndIndex, pres.size());
+          List<T> midRight = mids.subList(preEndIndex, mids.size());
+  
+          root.setRight(rebuildTree(preRight, midRight));
+  
+          return root;
+      }
+  
+      public static void main(String[] args) {
+          List<String> pres = Lists.newArrayList("A", "B", "C", "D");
+          List<String> mids = Lists.newArrayList("B", "A", "D", "C");
+          TreeNode<String> root = rebuildTree(pres, mids);
+          mid_trans(root);
+      }
+  
+      public static <T> void pre_trans(TreeNode<T> root) {
+          if (root == null) {
+              return;
+          }
+          System.out.println(root.getValue());
+          if (root.getLeft() != null) {
+              pre_trans(root.getLeft());
+          }
+          if (root.getRight() != null) {
+              pre_trans(root.getRight());
+          }
+      }
+  
+      public static <T> void mid_trans(TreeNode<T> root) {
+          if (root == null) {
+              return;
+          }
+          if (root.getLeft() != null) {
+              mid_trans(root.getLeft());
+          }
+          System.out.println(root.getValue());
+          if (root.getRight() != null) {
+              mid_trans(root.getRight());
+          }
+      }
+  }
+  ```
+
+  
+
 - 判断一棵树是不是平衡
 
   不仅要判断根节点是否平衡，还要判断子树本身是否平衡
@@ -331,6 +442,86 @@ $$
 #### 如何用图思考
 
 [原文](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
+
+```java
+class GreedyCspf<T,W>{
+    public void dijstr() {
+        biset() closetable;
+        源to
+        //cost //bandwithd
+        PriorityQueue queue = new PriorityQueue (){
+
+            //节点cost最小
+            //Fu
+        }
+
+        Function(node1, node2) {
+
+
+            int[] = new int[2]
+
+            int[0] = cost
+
+            int[1] = bandwidth;
+
+            if (node1.cost < node2) {
+                return node1;
+            }
+
+            if (node1.bandwidth > node2.bandwidth ) {
+                return node2;
+            }
+
+        }
+        queue.add(from)
+        bitset.add(from)
+        closebit.add(from)
+
+        while(!queue.isEmpty) {
+            //这个节点已经求出最优解
+            node negith = queue.remove();
+            bitset.remove(from.id())
+            clostbit.add(negith.id())
+
+            // 获取negible的所有出链路
+            // 根据向前星查找
+            
+            for (Link link, getAllOutLink(negith)){
+                Node to = link.getto();
+                
+                //to的最短约束以求出
+                if（closebit.contains(to)）{
+                 continue;
+                }
+                
+                //累加约束（强约束）
+                //反向dijstra已经求得to到目的地的最短约束
+                if (forsrc[] + PathAttr([]) [1] [2] [3] > to到目的器的最短约束) {
+                  continue;
+                }
+                
+                // 累加求出最优点节点到此节点的评价
+                PathAttr newbest = best[negith] + getLinkQuality(link);
+               
+                 if (!bitset.contains(to) || best[to] > newbest ) {
+                    
+                    best[to] = newbest;
+                    
+                    if (!bitset.contains(to)) {
+                      queue.add(to)
+                      
+                      bitset.add(to)
+                    } else {
+                    
+                      queue.remove(to)
+                      queue.add(to)
+                    }   
+                 }    
+            }
+        }
+    }
+}
+```
 
 
 
@@ -1058,7 +1249,7 @@ def insert_sort(nums):
 
 ```python
 def _merge(left, right)
-	l = 0
+	  l = 0
     r = 0
     ret = []
     while l < len(left) and r < len(right):
