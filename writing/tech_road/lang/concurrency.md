@@ -264,7 +264,7 @@ java 以提供关键字 `synchronized` 及 `volatile`  的形式，为防止资�
 - `synchronized`
 - `volatile` : 可以获得简单的赋值与返回操作的原子性，`volatile` 会立即写入内存中
 
-Java还包括显式的互斥机制，这中机制相比 `synchronized` 的优势是，某些操作失败后，可以使用 `finally`子句将系统维护在正确的状态。
+Java还包括显式的互斥机制，这种机制相比 `synchronized` 的优势是，某些操作失败后，可以使用 `finally`子句将系统维护在正确的状态。
 
 
 

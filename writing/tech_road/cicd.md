@@ -220,6 +220,29 @@ https://yq.aliyun.com/articles/40494?spm=a2c4e.11153959.teamhomeleft.95.44ab18b1
 
   `docker logs {container-hash}`
 
+- 编辑镜像，并上传
+
+  - 将某个容器保存为镜像
+
+    ```shell
+    docker commit --author "Changxin Cheng <chengcx1019@gmail.com>" --message "添加了pyspark，可通过python接口调用spark服务" 7beb77b1db47 blog:v1
+    
+    ```
+
+  - 将镜像与仓库相关联
+
+    ```shell
+    docker tag blog:v1 docker.io/chengcx/blog:v1
+    ```
+
+  - 将镜像从本地推送到仓库
+
+    ```shell
+    docker push docker.io/chengcx/blog:v1
+    ```
+
+    
+
 
 
 **容器与宿主机文件互通：**
