@@ -32,7 +32,11 @@
 
    `django.conf.urls.url`转变为 [`django.urls.re_path`](https://docs.djangoproject.com/en/2.1/ref/urls/#django.urls.re_path)
 
-  
+### note 3.0
+
+
+
+
 
 ## jupyterlab
 

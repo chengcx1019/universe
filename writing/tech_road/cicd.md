@@ -241,9 +241,6 @@ https://yq.aliyun.com/articles/40494?spm=a2c4e.11153959.teamhomeleft.95.44ab18b1
     docker push docker.io/chengcx/blog:v1
     ```
 
-    
-
-
 
 **容器与宿主机文件互通：**
 
@@ -256,6 +253,22 @@ https://yq.aliyun.com/articles/40494?spm=a2c4e.11153959.teamhomeleft.95.44ab18b1
   `docker cp  /yourpath/file {container_hash}:/path/file`
 
 更多指令参考：https://docs.docker.com/engine/reference/commandline/start/
+
+
+
+**docker 端口映射**
+
+**docker 挂载硬盘或目录**
+
+```
+-v /data/myblog:/data/myblog 
+```
+
+将需要暴露给nginx的文件分别映射到宿主机的对应目录中
+
+**docker 访问宿主机mysql**
+
+
 
 ##### compose
 
@@ -341,9 +354,28 @@ FLUSH PRIVILEGES;
 **构建前端**
 
 - 安装环境
+
+  更改各类镜像，apt-get 软件源，npm 源
+
   - apt-get update
   - apt-get install nodejs
   - apt-get install npm
+
+- npm
+
+  - 查看当前的仓库镜像
+
+    ```shell
+    npm config get registry
+    ```
+
+  - 设置当前镜像为淘宝源
+
+    ```shell
+    npm config set registry https://registry.npm.taobao.org
+    ```
+
+  还需要解决打包后文件过大的问题
 
 npm install
 
