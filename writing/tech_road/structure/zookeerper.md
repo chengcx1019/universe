@@ -146,6 +146,14 @@ cache.start(PathChildrenCache.StartMode.BUILD_INITIAL_CACHE);
 2. **把这个监听信息存储到客户端的 WatchManager 中；**
 3. **当 ZooKeeper 中的节点发生变化时，会通知客户端，客户端会调用相应 Watcher 对象中的回调方法。** 
 
+
+
+<u>server 端如何实现 watch 注册机制，如何管理对节点的监听，是否可以保证一致性（即确保 client 一定会收到节点变更的通知）</u> 
+
+
+
+
+
 两个问题：
 
 1. 如何注册 watcher
