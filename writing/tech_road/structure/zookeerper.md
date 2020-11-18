@@ -2,7 +2,7 @@
 
 
 
-> 分布式数据一致性解决方案
+> 分布式数据一致性解决方案，以下的描述中，节点指 zookeeper 集群的某个服务节点，而数据节点统一用 zookeeper 的内部术语 znode 表示
 
 ### Zookeeper Atomic Broadcast protocol (ZAB) 
 
@@ -43,6 +43,8 @@
 
 ### broadcast
 
+zookeeper 提供的通知客户端变更的机制为 watches
+
 zk 客户端会在指定节点上注册一个 watcher ，Znode 上节点数据被更新时，服务端就会通知客户端，这个过程通过三部曲来实现：
 
 1. 客户端注册 watcher
@@ -80,7 +82,92 @@ zk 客户端会在指定节点上注册一个 watcher ，Znode 上节点数据�
 
 
 
+### Watches —— 监听器
 
+1. **客户端向 ZooKeeper 服务器注册一个 Watcher 监听；**
+2. **把这个监听信息存储到客户端的 WatchManager 中；**
+3. **当 ZooKeeper 中的节点发生变化时，会通知客户端，客户端会调用相应 Watcher 对象中的回调方法。** 
+
+
+
+<u>server 端如何实现 watch 注册机制，如何管理对节点的监听，是否可以保证一致性（即确保 client 一定会收到节点变更的通知）</u> 
+
+
+
+zookeer watches 机制：
+
+- one-time trigger
+
+  使用 getData 获取了数据后，同时会设置一次watch，只会接收一次变更，后续变更的获取需要注册新的 watch
+
+- sent to the client
+
+  对于设置了 watch 的 change，客户端只会通过watch event 先收到这个变更，<u>倘若这个由 server 发向 client 的 watch event 延迟了，client 在此期间发起了查询会出现什么现象，这个保证还成立吗</u> 
+
+- The data for which the watch was set
+
+  data watches and child watches.
+
+  
+
+watches 提供的保证：
+
+论述的核心都是顺序性，zookeeper 的顺序性保证（强调的是集群内的节点的顺讯性）
+
+zk 保证写入在每个节点的写入顺序是一致的，但是并不保证每个节点会同步更新写入，<u>既然各个节点的写入是时间上是不一致，如何保证从集群的各个节点读取的数据是一致的呢，还是说zookeeper原本就没有做这个保证？</u>，zookeeper 本身对这个现象有一个专门术语进行描述,"hidden channel",client 可能会读取到“stale data”
+
+![image-20201118175739993](/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20201118175739993.png)  
+
+某一节点挂掉，原client注册的监听是否会同步到其他节点
+
+- 事件的分发都是有序的
+- client 如果监听了某个 znode，接受到watch event 会在看到节点新数据之前
+- watch event 事件的顺序 和 zk server 上的更新顺序一致
+
+watches 的注意事项：
+
+- watch 是一次性触发器；如果接收了一次 watch event 后，想要继续接受到未来变更的通知，需要设置另一个 watch(在event的回调里设置另一个watch)
+- 在收到 event 和 发出新的请求间存在延迟（在你收到 event 并设置新的 watch 之间，znode 可能已经变更了好几次）
+
+
+
+周期性 polling 与监听相结合
+
+
+
+getData、getChildren、exists 均有对 znode 设置 watch 的选项
+
+一个watch event 包含以下信息：
+
+```java
+the state of the zookeeper session
+event type: NodeCreated/NodeDeleted/NodeDataChanged/NodeChildrenChanged/None
+znode path
+```
+
+三者关联:
+
+当event type 为None时，表示 session 状态变更
+
+zookeeper 使用同一套机制来通知session和event的变化
+
+
+
+三个问题：
+
+1. 如何注册 watcher
+
+2. 客户端回调
+
+3. 客户端/服务端异常 watches 是否会恢复
+
+   - 客户端服务挂掉后会重新注册，客户端client挂掉后又该如何
+
+     客户端挂掉，无法接收注册的监听，关于这一次丢失该如何
+
+     <u>server 如何管理 client ，以临时节点的方式？</u>
+
+   - 服务器端挂掉会保留watches的信息吗
 
 #### 实现示例
 
@@ -140,25 +227,7 @@ cache.start(PathChildrenCache.StartMode.BUILD_INITIAL_CACHE);
 
 
 
-### 监听器
 
-1. **客户端向 ZooKeeper 服务器注册一个 Watcher 监听；**
-2. **把这个监听信息存储到客户端的 WatchManager 中；**
-3. **当 ZooKeeper 中的节点发生变化时，会通知客户端，客户端会调用相应 Watcher 对象中的回调方法。** 
-
-
-
-<u>server 端如何实现 watch 注册机制，如何管理对节点的监听，是否可以保证一致性（即确保 client 一定会收到节点变更的通知）</u> 
-
-
-
-
-
-两个问题：
-
-1. 如何注册 watcher
-
-2. 客户端回调
 
 
 
@@ -185,3 +254,16 @@ znode，作为存储媒介，ZNode 分为持久节点和临时节点
 
 版本控制
 
+znode 存储大小限制
+
+
+
+zookeeper 的数据存储在内存中
+
+[The znode hierarchy is stored in memory within each of the ZooKeeper servers](http://www.corejavaguru.com/bigdata/zookeeper/how-zookeeper-works#:~:text=Each%20ZooKeeper%20server%20also%20maintains,a%20znode%20is%201%20MB.) 
+
+
+
+如何在同一 SDK 中，支持客户端连接不同的server，以及其他的组件使用不同版本的客户端；看起来使用一个 client facroty 可以解决问题（如何确定应该使用哪一个client，同时引入多个client会不会存在依赖冲突）
+
+大量的监听与冗余监听哪种方式可以获得更大的收益
