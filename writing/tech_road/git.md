@@ -245,6 +245,26 @@ diff的起点是两个分支的公共父节点（即commit）
 
 
 
+### 回滚 merge request 的两种方式
+
+
+
+回到 merge 之前的 commit：
+
+```shell
+git reset --hard HEAD~1
+```
+
+提交一个新的 commit revert merge 的变更：
+
+```shell
+git revert -m 1 <merge-commit-hash>
+```
+
+https://www.git-tower.com/learn/git/faq/undo-git-merge/
+
+
+
 ### others
 
 两个共同历史的分支进行合并:git pull origin branchname --allow-unrelated-histories

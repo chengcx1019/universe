@@ -56,7 +56,7 @@
        for i in range(k, n):
            M = random.randint(1, i+1)
            if M <= k:
-               j = random.randint(0, k-1)
+               j = random.randint(0, k-1) # 对于k等于1来说，即选中即替换；k>1时，选中后，还需从池中抽取一个元素进行替换
                reservoir[j] = packets[i]
        return reservoir
    
