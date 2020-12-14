@@ -62,7 +62,7 @@ zookeeper结点个数的选取：zk使用一致性协议，节点过多会降低
 
 - 在 broker 启动的时候，它通过**创建临时节点**把自己的 ID 注册到 Zookeeper，Kafka组件订阅 Zookeeper 的 /brokers/ids 路径（broker 在 zk 上的注册路径），当有 broker 加入集群或退出集群时，这些组件就可以获得通知
 
-- 在 broker 停机、出现网络分区或长时间垃圾回收停顿时，broker 会从 zk上断开连接，此时 broker 在启动时创建的临时节点会自动从 Zookeeper 上移除，监听broker 列表的kafka组件会被告知该 broker 已移除
+- 在 broker 停机、出现网络分区或长时间垃圾回收停顿时，broker 会从 zk上断开连接，此时 broker 在启动时创建的临时节点会自动从 Zookeeper 上移除，监听 broker 列表的kafka组件会被告知该 broker 已移除
 
 #### 控制器
 
