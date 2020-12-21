@@ -1,0 +1,1 @@
+kafak是一个分布式应用，zookeeper 专注于分布式任务的协调，不妨一起看下kafka与zookeeper是如何完美配合的

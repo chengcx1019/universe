@@ -48,6 +48,8 @@ scalability, elasticity, and fault tolerance
 
 ## zookeeper 在 kafka 中的使用
 
+> kafka 的分布式任务是如何被 zookeeper 协调的
+
 Kafka 使用 Zookeeper保存集群的元数据信息和消费者信息（broker、主题和分区的元数据信息）。
 
 <img src="/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20201208111145183.png" alt="image-20201208111145183" style="zoom:50%;" />
@@ -241,7 +243,7 @@ kafka 的基本存储单元是分区
 ### 可靠性保证
 
 - 分区消息的顺序性保证
-- 只有当消息被写入分区的所有同步副本时，它才被认为是“已提交”的；生产者可以选择接受不同类型的确认（这两者其实是解耦的，那如果生产者指定的不是acks=all，那么就存在生产者以为成功但是写失败的情况）
+- <u>只有当消息被写入分区的所有同步副本时</u>，它才被认为是“已提交”的；生产者可以选择接受不同类型的确认（这两者其实是解耦的，那如果生产者指定的不是acks=all，那么就存在生产者以为成功但是写失败的情况）
 - 只要还有一个副本是活跃的，那么“已经提交”的消息就不会丢失
 - 消费者只能读取已经提交的消息
 
