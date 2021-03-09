@@ -54,7 +54,7 @@ Kafka 使用 Zookeeper保存集群的元数据信息和消费者信息（broker�
 
 <img src="/Users/changxin.cheng/Library/Application Support/typora-user-images/image-20201208111145183.png" alt="image-20201208111145183" style="zoom:50%;" />
 
-zookeeper结点个数的选取：zk使用一致性协议，节点过多会降低整个群组的性能
+zookeepe r结点个数的选取：zk使用一致性协议，节点过多会降低整个群组的性能
 
 生产者直接连接kafka broker，消费者直接连接的是zk（在后面的版本里消费者也是直接和 kafka 的 broker 相连）
 
